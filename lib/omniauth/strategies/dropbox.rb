@@ -3,7 +3,7 @@ require "omniauth/strategies/oauth2"
 module OmniAuth
   module Strategies
     class Dropbox < OmniAuth::Strategies::OAuth2
-      option :name, "dropbox"
+      option :name, :dropbox
 
       BASE_URL = "https://www.dropbox.com"
       API_URL = "https://api.dropboxapi.com"
@@ -22,14 +22,18 @@ module OmniAuth
         }
       end
 
+      option :authorize_options, [
+        :scope, :token_access_type, :force_reauthentication, :force_reapprove, :include_granted_scopes
+      ]
+
       uid { access_token.params["account_id"] }
       extra { raw_info }
 
       info do
         {
-          "uid" => raw_info["account_id"],
-          "name" => raw_info["name"]["display_name"],
-          "email" => raw_info["email"]
+          uid: raw_info["account_id"],
+          name: raw_info["name"]["display_name"],
+          email: raw_info["email"]
         }
       end
 
