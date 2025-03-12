@@ -4,7 +4,7 @@ require_relative "lib/omniauth/dropbox/version"
 
 Gem::Specification.new do |spec|
   spec.name = "omniauth-dropbox"
-  spec.version = Omniauth::Dropbox::VERSION
+  spec.version = OmniAuth::Dropbox::VERSION
   spec.authors = ["FirmStudio API Engineering team"]
   spec.email = ["api-engineering@firmstudio.io"]
 
@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "omniauth", "~> 2.0"
-  spec.add_dependency "omniauth-oauth2", "~> 1.4"
+  spec.add_dependency "omniauth-oauth2", "~> 1.8.0"
 
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 13.0"
