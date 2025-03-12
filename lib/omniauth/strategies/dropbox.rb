@@ -29,7 +29,9 @@ module OmniAuth
         :scope, :token_access_type, :force_reauthentication, :force_reapprove, :include_granted_scopes
       ]
 
-      uid { raw_info["uid"] }
+      uid do
+        access_token.token ? raw_info["account_id"] : nil
+      end
 
       info do
         {
